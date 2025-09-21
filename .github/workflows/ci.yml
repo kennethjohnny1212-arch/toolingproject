@@ -1,0 +1,43 @@
+# The name of your workflow, which will appear on GitHub
+name: CI Pipeline
+
+# The events that trigger this workflow
+on:
+  push:
+    branches:
+      - main # This pipeline runs every time you push to the 'main' branch
+
+# A workflow is composed of one or more jobs
+jobs:
+  # The 'test' job will run your pytest script
+  test:
+    runs-on: ubuntu-latest # This specifies the virtual machine environment to run on
+    steps:
+      # This action checks out your repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # This action sets up Python in the virtual machine
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      # This step installs the project's dependencies
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # This step runs your test suite
+      - name: Run tests
+        run: pytest
+
+  # The 'build' job will create the Docker image
+  build:
+    needs: test # This ensures the 'build' job only runs if the 'test' job passes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t my-streamlit-app .
