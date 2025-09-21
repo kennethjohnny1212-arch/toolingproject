@@ -74,9 +74,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-- **Project Maintainer**: Ankit Sharma
-- **Email**: Ankitraj.84060@gmail.com
-- **LinkedIn**: [Ankit Sharma](https://www.linkedin.com/in/ankitrajsh)
+- **Project Maintainer**: Zhipeng CHEN
+- **Email**: zhipeng1996chen@gmail.com
 
 ## Acknowledgments
 
