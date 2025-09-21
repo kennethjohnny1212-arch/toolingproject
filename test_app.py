@@ -1,13 +1,13 @@
 import pandas as pd
-from main import get_recommendation_based_on_movie_name
+from main import recommend
 
-def test_get_recommendation_based_on_movie_name():
-    # Get recommendations for a known movie, e.g., 'Avatar'
-    # The project uses a specific movie title, so make sure to use one from the dataset.
-    recommendations = get_recommendation_based_on_movie_name('Avatar')
+def test_recommend_function_output():
+    recommended_movie_names, recommended_movie_posters = recommend('Avatar')
 
-    # Check if the function returns a non-empty list of recommendations
-    assert len(recommendations) > 0
+    # Test that names and posters lists are not empty and have a size of 5.
+    assert len(recommended_movie_names) == 5
+    assert len(recommended_movie_posters) == 5
 
-    # Check if the output is a pandas DataFrame as expected
-    assert isinstance(recommendations, pd.DataFrame)
+    # You could also add a check to ensure the outputs are lists of strings.
+    assert isinstance(recommended_movie_names[0], str)
+    assert isinstance(recommended_movie_posters[0], str)
